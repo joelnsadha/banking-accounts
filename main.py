@@ -18,7 +18,7 @@ class Account:
 
 class InterestBearingAccount(Account):
     def __init__(self, account_number, balance, interest_rate):
-        super().__init__(self, account_number, balance)
+        Account.__init__(self, account_number, balance)
         self.interest_rate = interest_rate
 
     def calculate_interest_rate(self):
@@ -41,3 +41,13 @@ class SavingsAccount(InterestBearingAccount, Transactions):
     def __init__(self, account_number, balance, interest_rate):
         InterestBearingAccount.__init__(self, account_number, balance, interest_rate)
         Transactions.__init__(self)
+
+
+savings = SavingsAccount("SA001", 5000, 0.08)
+savings.deporit(2500)
+# 7500
+savings.withdraw(650)
+interest = savings.calculate_interest_rate()
+balance = savings.get_balance()
+
+print("Balance: {}, Interest:{}".format(balance, interest))
