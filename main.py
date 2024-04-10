@@ -38,4 +38,6 @@ class Transactions:
 
 
 class SavingsAccount(InterestBearingAccount, Transactions):
-    pass
+    def __init__(self, account_number, balance, interest_rate):
+        InterestBearingAccount.__init__(self, account_number, balance, interest_rate)
+        Transactions.__init__(self)
